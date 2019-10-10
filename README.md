@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/thomasmarchal/pipelines-java/_apis/build/status/thomasmarchal.pipelines-java?branchName=master)](https://dev.azure.com/thomasmarchal/pipelines-java/_build/latest?definitionId=1&branchName=master)
 
 # Contributing
 
