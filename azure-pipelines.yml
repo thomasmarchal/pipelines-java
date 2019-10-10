@@ -9,13 +9,32 @@
 # pool:
 #   vmImage: 'ubuntu-latest'
 
-name: $(Date:yyyyMMdd)$(Rev:.r)
 variables:
-  var1: value1
-jobs:
-- job: myFirstJob
-  steps:
-  - script: echo First step! var1 = $(var1) date = $(Date:yyyyMMdd)$(Rev:.r) secret = $(secretPassword)
+  var1: Windows
+
+stages:
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - script: echo Building!
+- stage: Test
+  jobs:
+  - job: TestOnWindows
+    variables:
+      var1: Windows
+    steps:
+    - script: echo Testing on $(var1)!  secret = $(secretPassword)
+  - job: TestOnLinux
+    variables:
+      var1: Linux
+    steps:
+    - script: echo Testing on $(var1)!  secret = $(secretPassword)
+- stage: Deploy
+  jobs:
+  - job: Deploy
+    steps:
+    - script: echo Deploying the code!
 
 # - task: Maven@3
 #   inputs:
