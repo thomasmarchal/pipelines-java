@@ -12,18 +12,13 @@
 #   variables:
 #   global_variable: value    # this is available to all jobs
 
-steps:
-- powershell: |
-    # Using an input-macro:
-    Write-Host "This works: $(secretPassword)"
-
-    # Using the env var directly:
-    Write-Host "This does not work: $env:SECRETPASSWORD"
-
-    # Using the mapped env var:
-    Write-Host "This works: $env:MY_MAPPED_ENV_VAR"    # Recommended
-  env:
-    MY_MAPPED_ENV_VAR: $(secretPassword)
+name: $(Date:yyyyMMdd)$(Rev:.r)
+variables:
+  var1: value1
+jobs:
+- job: One
+  steps:
+  - script: echo First step!
 
 # - task: Maven@3
 #   inputs:
