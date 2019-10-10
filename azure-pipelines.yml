@@ -10,6 +10,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- powershell: |
+    # Using an input-macro:
+    Write-Host "This works: $(secretPassword)"
+
+    # Using the env var directly:
+    Write-Host "This does not work: $env:SECRETPASSWORD"
+
+    # Using the mapped env var:
+    Write-Host "This works: $env:MY_MAPPED_ENV_VAR"    # Recommended
+  env:
+    MY_MAPPED_ENV_VAR: $(secretPassword)
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
