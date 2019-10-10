@@ -9,16 +9,13 @@
 # pool:
 #   vmImage: 'ubuntu-latest'
 
-#   variables:
-#   global_variable: value    # this is available to all jobs
-
 name: $(Date:yyyyMMdd)$(Rev:.r)
 variables:
   var1: value1
 jobs:
-- job: One
+- job: myFirstJob
   steps:
-  - script: echo First step! name = $(name) secret = $(secretPassword)
+  - script: echo First step! var1 = $(var1) date = $(Date:yyyyMMdd)$(Rev:.r) secret = $(secretPassword)
 
 # - task: Maven@3
 #   inputs:
