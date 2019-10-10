@@ -18,7 +18,7 @@ variables:
 jobs:
 - job: One
   steps:
-  - script: echo First step!
+  - script: echo First step! name = $(name) secret = $(secretPassword)
 
 # - task: Maven@3
 #   inputs:
